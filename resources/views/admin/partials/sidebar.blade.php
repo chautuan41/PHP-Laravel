@@ -39,16 +39,16 @@
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ route('accounts') }}"><span>Accounts Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
-                                            href="/backend/pages/tables/bootstrap-tables.html"><span>Products
+                                            href="{{ route('products') }}"><span>Products
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
                                             href="{{ route('producttypes') }}"><span>Products types
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
-                                            href="/backend/pages/tables/bootstrap-tables.html"><span>Invoices
+                                            href="{{ route('invoices') }}"><span>Invoices
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
-                                            href="/backend/pages/tables/bootstrap-tables.html"><span>Invoice details
+                                            href="{{ route('invoicedetails') }}"><span>Invoice details
                                                 Table</span></a></li>
                                 </ul>
                             </div>

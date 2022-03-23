@@ -43,7 +43,7 @@
                                 <select class="form-select" id="country" aria-label="Default select example"
                                     name="status">
                                     <option value="1">Active</option>
-                                    <option value="2">Deactive</option>
+                                    <option value="0">Deactive</option>
                                 </select>
                             </div>
                             <!-- End of Form -->

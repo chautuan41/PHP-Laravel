@@ -39,7 +39,6 @@ class ProductTypeController extends Controller
 
     function showEdit(Request $req, $id){       
         $ProT = ProductType::find($id);
-        $ProT->product_types_name = $req->name;
         $ProT->status = $req->status;
         $ProT -> save();
         $dtProT = ProductType::all();

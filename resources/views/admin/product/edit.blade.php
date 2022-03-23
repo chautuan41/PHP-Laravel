@@ -27,42 +27,64 @@
             <div class="card-body">
                 <div class="row mb-4">
                     <div class="col-lg-4 col-sm-6">
-                        <form action="{{route('accounts.edit.post',['ID'=>$dt->id]) }}" method="POST" role="form">
+                        <form action="{{route('products.edit.post',['ID'=>$dt->id]) }}" method="POST" role="form">
                             <!-- Form -->
                             @csrf
                             <!-- Form -->
                             <div class="mb-3">
-                                <label for="firstName">Full name</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="fullname" value="{{$dt->fullname}}" require>
+                                <label for="firstName">Product Name</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="name" value="{{$dt->product_name}}" require>
                             </div>
                             <!-- End of Form -->
                             <!-- Form -->
                             <div class="mb-3">
-                                <label for="disabledTextInput">Email</label>
-                                <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Disabled input" disabled name="email" value="{{$dt->email}}" require>
+                                <label for="firstName">Product Type</label>
+                                <select class="form-select" id="country" aria-label="Default select example"
+                                    name="idProT" require>
+                                    @foreach ($dtPro as $Pro)
+                                    <option value="{{$Pro->product_types_id}}">{{$Pro->product_types_name}}</option>
+                                    @endforeach
+                                    @foreach ($dtProT as $ProT)
+                                    @if($ProT->id != $dt->product_types_id)
+                                    <option value="{{$ProT->id}}">{{$ProT->product_types_name}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
-                                <label for="firstName">Phone</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="phone" value="{{$dt->phone}}" require>
+                                <label for="firstName">Price</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="price" value="{{$dt->price}}" require>
                             </div>
                             <div class="mb-3">
-                                <label for="firstName">Address</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="address" value="{{$dt->address}}" require>
+                                <label for="firstName">Quantity</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="quantity" value="{{$dt->quantity}}" require>
                             </div>
-
+                            <div class="mb-3">
+                                <label for="firstName">Size</label>
+                                <select class="form-select" id="country" aria-label="Default select example" name="size"
+                                    require>
+                                    <option selected value="{{$dt->size}}">{{$dt->size}}</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Image</label>
+                                <input class="form-control" type="file" id="formFile" name="image">
+                            </div>
                             <!-- Form -->
                             <div class="mb-4">
                                 <label class="my-1 mr-2" for="country">Status</label>
                                 <select class="form-select" id="country" aria-label="Default select example"
-                                    name="status">
-
+                                    name="status" require>
                                     <option value="1">Active</option>
-                                    <option value="2">Deactive</option>
+                                    <option value="0">Deactive</option>
                                 </select>
                             </div>
                             <!-- End of Form -->

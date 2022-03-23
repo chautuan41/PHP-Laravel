@@ -32,7 +32,7 @@
                             @csrf
                             <!-- Form -->
                             <div class="mb-3">
-                                <label for="firstName">Full name</label>
+                                <label for="firstName">Full Name</label>
                                 <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
                                     name="fullname" value="{{$dt->fullname}}" require>
                             </div>
@@ -54,13 +54,11 @@
                                 <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
                                     name="address" value="{{$dt->address}}" require>
                             </div>
-
                             <!-- Form -->
                             <div class="mb-4">
                                 <label class="my-1 mr-2" for="country">Status</label>
                                 <select class="form-select" id="country" aria-label="Default select example"
                                     name="status">
-
                                     <option value="1">Active</option>
                                     <option value="2">Deactive</option>
                                 </select>

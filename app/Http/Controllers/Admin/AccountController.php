@@ -25,9 +25,6 @@ class AccountController extends Controller
 
     function showEdit(Request $req, $id){       
         $Acc = Account::find($id);
-        $Acc->fullname = $req->fullname;
-        $Acc->phone = $req->phone;
-        $Acc->address = $req->address;
         $Acc->status = $req->status;
         $Acc -> save();
         $dtAcc = Account::all();
