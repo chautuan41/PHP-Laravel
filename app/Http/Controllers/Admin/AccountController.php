@@ -15,27 +15,7 @@ class AccountController extends Controller
         $dtAcc = DB::table('accounts')->where('status','=','1')->get();   
         return view('admin.account.index',compact('dtAcc'));
     }
-
-    function create()
-    {
-        return view('admin.account.create');
-    }
-
-    function showCreate(Request $req){
-        $Acc = new Account();
-        $Acc->fullname = $req->name;
-        $Acc->email = $req->email;
-        $Acc->phone = $req->phone;
-        $Acc->address = $req->address;
-        $Acc->role = $req->role;
-        $Acc->avartar = $req->image;
-        $Acc->status = $req->status;
-        $Acc -> save();
-        $dtAcc = Account::all();
-       return redirect()->route('accounts',compact('dtAcc'));
-    }
-
- 
+     
     function edit($id)
     {
         $dt = Account::find($id);

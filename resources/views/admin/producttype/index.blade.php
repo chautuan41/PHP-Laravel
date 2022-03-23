@@ -1,5 +1,5 @@
 @extends('admin.partials.app')
-@section('title') Account @endsection
+@section('title') Product Type @endsection
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
@@ -7,10 +7,10 @@
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                 <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
                 <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+                <li class="breadcrumb-item active" aria-current="page">Product Type</li>
             </ol>
         </nav>
-        <h2 class="h4">All Accounts</h2>
+        <h2 class="h4">All Product Type</h2>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
@@ -48,50 +48,33 @@
         </div>
     </div>
 </div>
+<div class="mb-3">
+    <a href="{{route('producttypes.create')}}" class="btn btn-pill btn-outline-success"><i
+            class="far fa-plus-square  mr-2"></i>Add Product Type</a>
+</div>
 <div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Role</th>
-                <th>Avartar</th>
+                <th>Product Type Name</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($dtAcc as $Acc)
+            @foreach ($dtProT as $ProT)
             <!-- Item -->
             <tr>
                 <td>
-                    <span class="font-weight-normal">{{ $Acc->fullname }}</span>
+                    <span class="font-weight-normal">{{ $ProT->product_types_name }}</span>
                 </td>
                 <td>
-                    <span class="font-weight-normal">{{ $Acc->email }}</span>
-                </td>
-                <td><span class="font-weight-normal">{{ $Acc->phone }}</span></td>
-                <td><span class="font-weight-normal">{{ $Acc->address }}</span></td>
-                <td>
-                    @if ($Acc->role == 1)
-                    <span class="btn btn-outline-info">Admin</span>
-                    @else
-                    <span class="btn btn-outline-warning">User</span>
-                    @endif
-                </td>
-                <td><img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
-                        src="/backend/assets/img/team/{{ $Acc->avartar }}"></td>
-
-                <td>
-                    @if ($Acc->status == 1)
+                    @if ($ProT->status == 1)
                     <span class="font-weight-bold text-success">Active</span>
                     @else
                     <span class="font-weight-bold text-danger">Deactive</span>
                     @endif
                 </td>
-                @if (Auth::user()->id != $Acc->id)
                 <td>
                     <div class="btn-group">
                         <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
@@ -104,16 +87,14 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../invoice.html"><span class="fas fa-eye mr-2"></span>View
                                 Details</a>
-                            <a class="dropdown-item" href="{{route('accounts.edit',['ID'=>$Acc->id])}}"><span
+                            <a class="dropdown-item" href="{{route('producttypes.edit',['ID'=>$ProT->id])}}"><span
                                     class="fas fa-edit mr-2"></span>Edit</a>
                             <a class="dropdown-item text-danger"
-                                href="{{route('accounts.delete',['ID'=>$Acc->id])}}"><span
+                                href="{{route('producttypes.delete',['ID'=>$ProT->id])}}"><span
                                     class="fas fa-trash-alt mr-2"></span>Remove</a>
                         </div>
                     </div>
                 </td>
-                @endif
-
             </tr>
             @endforeach
 

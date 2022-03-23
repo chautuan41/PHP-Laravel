@@ -42,7 +42,7 @@
                                             href="/backend/pages/tables/bootstrap-tables.html"><span>Products
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
-                                            href="/backend/pages/tables/bootstrap-tables.html"><span>Products types
+                                            href="{{ route('producttypes') }}"><span>Products types
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
                                             href="/backend/pages/tables/bootstrap-tables.html"><span>Invoices
