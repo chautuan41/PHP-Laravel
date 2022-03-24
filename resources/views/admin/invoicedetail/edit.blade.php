@@ -27,41 +27,35 @@
             <div class="card-body">
                 <div class="row mb-4">
                     <div class="col-lg-4 col-sm-6">
-                        <form action="{{route('accounts.edit.post',['ID'=>$dt->id]) }}" method="POST" role="form">
+                        <form action="{{ route('invoicedetails.edit.post',['ID'=>$dt->id]) }}" method="POST"
+                            role="form">
                             <!-- Form -->
                             @csrf
+
                             <!-- Form -->
                             <div class="mb-3">
-                                <label for="firstName">Full Name</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="fullname" value="{{$dt->fullname}}" require>
-                            </div>
-                            <!-- End of Form -->
-                            <!-- Form -->
-                            <div class="mb-3">
-                                <label for="disabledTextInput">Email</label>
+                                <label for="disabledTextInput">Invoice Id</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Disabled input" disabled  value="{{$dt->email}}" require>
+                                    placeholder="Disabled input" disabled value="{{$dt->invoices_id}}" require>
+                            </div>
+                            <!-- End of Form -->
+                            <!-- Form -->
+                            <div class="mb-3">
+                                <label for="disabledTextInput">Product Id</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Disabled input" disabled value="{{$dt->products_id}}" require>
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
-                                <label for="firstName">Phone</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="phone" value="{{$dt->phone}}" require>
-                            </div>
-                            <div class="mb-3">
-                                <label for="firstName">Address</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="address" value="{{$dt->address}}" require>
+                                <label for="firstName">Quantity</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="quantity" value="{{$dt->quantity}}" require>
                             </div>
                             <!-- Form -->
-                            <div class="mb-4">
-                                <label class="my-1 mr-2" for="country">Status</label>
-                                <select class="form-select" id="country" aria-label="Default select example"
-                                    name="status">
-                                    <option value="1">Active</option>
-                                    <option value="2">Deactive</option>
-                                </select>
+                            <div class="mb-3">
+                                <label for="disabledTextInput">Unit price</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Disabled input" disabled value="{{$dt->unitprice}}" require>
                             </div>
                             <!-- End of Form -->
                             <button type="submit" class="btn btn-block btn-primary">Edit</button>

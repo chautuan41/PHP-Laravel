@@ -56,6 +56,16 @@ class LoginController extends Controller
             return redirect()->intended(route('admin.dashboard'));
         }
         return back()->withInput($request->only('email', 'remember'));
+
+        if (Auth::guard('web')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 2,
+            'status' => 1
+        ], $request->get('remember'))) {
+            return redirect()->intended(route('home'));
+        }
+        return back()->withInput($request->only('email', 'remember'));
     }
     public function logout(Request $request)
     {

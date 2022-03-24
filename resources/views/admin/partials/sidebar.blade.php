@@ -19,7 +19,7 @@
                 <div class="sidebar-inner px-4 pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a href="/backend/pages/dashboard/dashboard.html" class="nav-link">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                                 <span class="sidebar-icon"><span class="fas fa-chart-pie"></span></span>
                                 <span>Overview</span>
                             </a>
@@ -42,12 +42,14 @@
                                             href="{{ route('products') }}"><span>Products
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
-                                            href="{{ route('producttypes') }}"><span>Products types
+                                            href="{{ route('producttypes') }}"><span>Products Types
                                                 Table</span></a></li>
                                     <li class="nav-item "><a class="nav-link"
                                             href="{{ route('invoices') }}"><span>Invoices
                                                 Table</span></a></li>
-
+                                    <li class="nav-item "><a class="nav-link"
+                                            href="{{ route('invoicedetails') }}"><span>Invoice Details
+                                                Table</span></a></li>
                                 </ul>
                             </div>
                         </li>

@@ -32,8 +32,6 @@ class InvoiceController extends Controller
    function showCreate(Request $req){
        $Inv = new Invoice();
        $Inv->account_id = $req->idAcc;
-
-       
        $Inv->issueddate =  Carbon::now(); ;
        $Inv->shippingaddress = $req->address;
        $Inv->shippingphone = $req->phone;
@@ -46,18 +44,18 @@ class InvoiceController extends Controller
 
    function edit($id)
    {
-    $Pro = Invoice::find($id);
-    $Pro -> status = 1;
-    $Pro -> save();
-    $dtPro = DB::table('invoices')->where('status','!=','0')->get();    
-    return redirect()->route('invoices',compact('dtPro'));
+    $Inv = Invoice::find($id);
+    $Inv -> status = 1;
+    $Inv -> save();
+    $dtInv = DB::table('invoices')->where('status','!=','0')->get();    
+    return redirect()->route('invoices',compact('dtInv'));
    }
-
+   
    function delete($id){       
-       $Pro = Invoice::find($id);
-       $Pro -> status = 0;
-       $Pro -> save();
-       $dtPro = DB::table('invoices')->where('status','!=','0')->get();    
-       return redirect()->route('invoices',compact('dtPro'));
+       $Inv = Invoice::find($id);
+       $Inv -> status = 0;
+       $Inv -> save();
+       $dtInv = DB::table('invoices')->where('status','!=','0')->get();    
+       return redirect()->route('invoices',compact('dtInv'));
    } 
 }

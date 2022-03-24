@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth:web']], function () {
+    
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
+    Route::get('/products/{ID}', [HomeController::class, 'products'])->name('products');
+    Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+});

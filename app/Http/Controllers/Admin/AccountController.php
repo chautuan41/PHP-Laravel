@@ -19,12 +19,14 @@ class AccountController extends Controller
     function edit($id)
     {
         $dt = Account::find($id);
-        
         return view('admin.account.edit',compact('dt'));
     }
 
     function showEdit(Request $req, $id){       
         $Acc = Account::find($id);
+        $Acc->fullname = $req->fullname;
+        $Acc->phone = $req->phone;
+        $Acc->address = $req->address;
         $Acc->status = $req->status;
         $Acc -> save();
         $dtAcc = Account::all();

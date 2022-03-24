@@ -48,68 +48,41 @@
         </div>
     </div>
 </div>
-<div class="mb-3">
-    <a href="{{route('invoices.create')}}" class="btn btn-pill btn-outline-success"><i
-            class="far fa-plus-square  mr-2"></i>Add Invoice</a>
-</div>
 <div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Account</th>
-                <th>Issued date</th>
-                <th>Shipping Address</th>
-                <th>Shipping Phone</th>
-                <th>Total</th>
+
+                <th>Invoice Id</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
                 <th>Status</th>
-                <th>Action</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach ($dtInv as $Inv)
+            @foreach ($dtInvD as $InvD)
             <!-- Item -->
             <tr>
+
+
                 <td>
-                    <span class="font-weight-normal">{{ $Inv->fullname }}</span>
+                    <span class="font-weight-normal">{{ $InvD->invoices_id }}</span>
                 </td>
                 <td>
-                    <span class="font-weight-normal">{{ $Inv->issueddate }}</span>
+                    <span class="font-weight-normal">{{ $InvD->product_name }}</span>
                 </td>
-                <td><span class="font-weight-normal">{{ $Inv->shippingaddress }}</span></td>
-                <td><span class="font-weight-normal">{{ $Inv->shippingphone }}</span></td>
-                <td><span class="font-weight-normal">{{ $Inv->total }}</span></td>
+                <td><span class="font-weight-normal">{{ $InvD->quantity }}</span></td>
+                <td><span class="font-weight-normal">{{ $InvD->unitprice }}</span></td>
                 <td>
-                    @if ($Inv->status == 1)
+                    @if ($InvD->status == 1)
                     <span class="font-weight-bold text-success">Active</span>
-                    @elseif ($Inv->status == 2)
-                    <span class="font-weight-bold text-info">Await</span>
                     @else
                     <span class="font-weight-bold text-danger">Deactive</span>
                     @endif
                 </td>
-                <td>
-                    <div class="btn-group">
-                        <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="icon icon-sm">
-                                <span class="fas fa-ellipsis-h icon-dark"></span>
-                            </span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('invoicedetails.detail',['ID'=>$Inv->id])}}"><span
-                                    class="fas fa-eye mr-2"></span>View
-                                Details</a>
-                            @if($Inv->status == 2)
-                            <a class="dropdown-item" href="{{route('invoices.edit',['ID'=>$Inv->id])}}"><span
-                                    class="fas fa-check-circle mr-2"></span>Active</a>
-                            @endif
-                            <a class="dropdown-item text-danger"
-                                href="{{route('invoices.delete',['ID'=>$Inv->id])}}"><span
-                                    class="fas fa-trash-alt mr-2"></span>Remove</a>
-                        </div>
-                    </div>
-                </td>
+
             </tr>
             @endforeach
         </tbody>

@@ -27,44 +27,47 @@
             <div class="card-body">
                 <div class="row mb-4">
                     <div class="col-lg-4 col-sm-6">
-                        <form action="{{route('accounts.edit.post',['ID'=>$dt->id]) }}" method="POST" role="form">
+                        <form action="{{ route('invoicedetails.create.post') }}" method="POST" role="form">
                             <!-- Form -->
                             @csrf
                             <!-- Form -->
                             <div class="mb-3">
-                                <label for="firstName">Full Name</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="fullname" value="{{$dt->fullname}}" require>
-                            </div>
-                            <!-- End of Form -->
-                            <!-- Form -->
-                            <div class="mb-3">
-                                <label for="disabledTextInput">Email</label>
-                                <input type="text" id="disabledTextInput" class="form-control"
-                                    placeholder="Disabled input" disabled  value="{{$dt->email}}" require>
-                            </div>
-                            <!-- End of Form -->
-                            <div class="mb-3">
-                                <label for="firstName">Phone</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="phone" value="{{$dt->phone}}" require>
-                            </div>
-                            <div class="mb-3">
-                                <label for="firstName">Address</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                                    name="address" value="{{$dt->address}}" require>
-                            </div>
-                            <!-- Form -->
-                            <div class="mb-4">
-                                <label class="my-1 mr-2" for="country">Status</label>
+                                <label for="firstName">Invoice</label>
                                 <select class="form-select" id="country" aria-label="Default select example"
-                                    name="status">
-                                    <option value="1">Active</option>
-                                    <option value="2">Deactive</option>
+                                    name="idInv" require>
+                                    <option selected>Open this select menu</option>
+                                    @foreach ($dtInv as $Inv)
+                                    <option value="{{$Inv->id}}">{{$Inv->id}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <!-- End of Form -->
-                            <button type="submit" class="btn btn-block btn-primary">Edit</button>
+                            <!-- Form -->
+                            <div class="mb-3">
+                                <label for="firstName">Product</label>
+                                <select class="form-select" id="country" aria-label="Default select example"
+                                    name="idPro" require>
+                                    <option selected>Open this select menu</option>
+                                    @foreach ($dtPro as $Pro)
+                                    <option value="{{$Pro->id}}">{{$Pro->product_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- End of Form -->
+
+                            <div class="mb-3">
+                                <label for="firstName">Quantity</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="quantity" require>
+                            </div>
+                            <div class="mb-3">
+                                <label for="firstName">Unit price</label>
+                                <input type="text" class="form-control" id="text" aria-describedby="emailHelp"
+                                    name="unitprice" require>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-block btn-primary">Add</button>
                         </form>
                     </div>
                 </div>
