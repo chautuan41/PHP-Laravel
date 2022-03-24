@@ -36,7 +36,7 @@ class ProductController extends Controller
        $Pro->quantity = $req->quantity;
        $Pro->size = $req->size;
        $Pro->image = $req->image;
-       $Pro->status = $req->status;
+       $Pro->status = 1;
        $Pro -> save();
        $dtPro = Product::all();
       return redirect()->route('products',compact('dtPro'));

@@ -37,16 +37,7 @@
                                     name="name" require>
                             </div>
                             <!-- End of Form -->
-                            <!-- Form -->
-                            <div class="mb-4">
-                                <label class="my-1 mr-2" for="country">Status</label>
-                                <select class="form-select" id="country" aria-label="Default select example"
-                                    name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Deactive</option>
-                                </select>
-                            </div>
-                            <!-- End of Form -->
+
                             <button type="submit" class="btn btn-block btn-primary">Add</button>
                         </form>
                     </div>

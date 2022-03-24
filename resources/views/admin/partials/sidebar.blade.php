@@ -47,9 +47,7 @@
                                     <li class="nav-item "><a class="nav-link"
                                             href="{{ route('invoices') }}"><span>Invoices
                                                 Table</span></a></li>
-                                    <li class="nav-item "><a class="nav-link"
-                                            href="{{ route('invoicedetails') }}"><span>Invoice details
-                                                Table</span></a></li>
+
                                 </ul>
                             </div>
                         </li>

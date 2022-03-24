@@ -24,7 +24,7 @@ class ProductTypeController extends Controller
     function showCreate(Request $req){
         $ProT = new ProductType();
         $ProT->product_types_name = $req->name;
-        $ProT->status = $req->status;
+        $ProT->status = 1;
         $ProT -> save();
         $dtProT = ProductType::all();
        return redirect()->route('producttypes',compact('dtProT'));

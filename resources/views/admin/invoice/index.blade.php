@@ -48,50 +48,45 @@
         </div>
     </div>
 </div>
+<div class="mb-3">
+    <a href="{{route('invoices.create')}}" class="btn btn-pill btn-outline-success"><i
+            class="far fa-plus-square  mr-2"></i>Add Invoice</a>
+</div>
 <div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Role</th>
-                <th>Avartar</th>
+                <th>Account</th>
+                <th>Issued date</th>
+                <th>Shipping Address</th>
+                <th>Shipping Phone</th>
+                <th>Total</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($dtAcc as $Acc)
+            @foreach ($dtInv as $Inv)
             <!-- Item -->
             <tr>
                 <td>
-                    <span class="font-weight-normal">{{ $Acc->fullname }}</span>
+                    <span class="font-weight-normal">{{ $Inv->fullname }}</span>
                 </td>
                 <td>
-                    <span class="font-weight-normal">{{ $Acc->email }}</span>
+                    <span class="font-weight-normal">{{ $Inv->issueddate }}</span>
                 </td>
-                <td><span class="font-weight-normal">{{ $Acc->phone }}</span></td>
-                <td><span class="font-weight-normal">{{ $Acc->address }}</span></td>
+                <td><span class="font-weight-normal">{{ $Inv->shippingaddress }}</span></td>
+                <td><span class="font-weight-normal">{{ $Inv->shippingphone }}</span></td>
+                <td><span class="font-weight-normal">{{ $Inv->total }}</span></td>
                 <td>
-                    @if ($Acc->role == 1)
-                    <span class="btn btn-outline-info">Admin</span>
-                    @else
-                    <span class="btn btn-outline-warning">User</span>
-                    @endif
-                </td>
-                <td><img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
-                        src="/backend/assets/img/team/{{ $Acc->avartar }}"></td>
-
-                <td>
-                    @if ($Acc->status == 1)
+                    @if ($Inv->status == 1)
                     <span class="font-weight-bold text-success">Active</span>
+                    @elseif ($Inv->status == 2)
+                    <span class="font-weight-bold text-info">Await</span>
                     @else
                     <span class="font-weight-bold text-danger">Deactive</span>
                     @endif
                 </td>
-                @if (Auth::user()->id != $Acc->id)
                 <td>
                     <div class="btn-group">
                         <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
@@ -102,21 +97,21 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="../invoice.html"><span class="fas fa-eye mr-2"></span>View
+                            <a class="dropdown-item" href="{{route('invoicedetails',['ID'=>$Inv->id])}}"><span
+                                    class="fas fa-eye mr-2"></span>View
                                 Details</a>
-                            <a class="dropdown-item" href="{{route('accounts.edit',['ID'=>$Acc->id])}}"><span
-                                    class="fas fa-edit mr-2"></span>Edit</a>
+                            @if($Inv->status == 2)
+                            <a class="dropdown-item" href="{{route('invoices.edit',['ID'=>$Inv->id])}}"><span
+                                    class="fas fa-check-circle mr-2"></span>Active</a>
+                            @endif
                             <a class="dropdown-item text-danger"
-                                href="{{route('accounts.delete',['ID'=>$Acc->id])}}"><span
+                                href="{{route('invoices.delete',['ID'=>$Inv->id])}}"><span
                                     class="fas fa-trash-alt mr-2"></span>Remove</a>
                         </div>
                     </div>
                 </td>
-                @endif
-
             </tr>
             @endforeach
-
         </tbody>
     </table>
     <div class="card-footer px-3 border-0 d-flex align-items-center justify-content-between">

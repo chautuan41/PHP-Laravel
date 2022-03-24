@@ -17,8 +17,8 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
             $table->integer('account_id')->unsigned();
             $table->string('issueddate');
-            $table->integer('shippingaddress');
-            $table->integer('shippingphone');
+            $table->string('shippingaddress');
+            $table->string('shippingphone');
             $table->string('total');
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();

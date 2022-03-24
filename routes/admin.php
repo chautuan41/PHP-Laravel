@@ -56,7 +56,7 @@ Route::group(['prefix' => '/'], function () {
 
         //invoice details
         Route::group(['prefix' => 'invoicedetails'], function() {
-            Route::get('/',[Admin\InvoiceDetailController::class, 'index'])->name('invoicedetails');
+            Route::get('/{ID}',[Admin\InvoiceDetailController::class, 'index'])->name('invoicedetails');
             Route::get('create',[Admin\InvoiceDetailController::class, 'create'])->name('invoicedetails.create');
             Route::post('create',[Admin\InvoiceDetailController::class, 'showCreate'])->name('invoicedetails.create.post');
             Route::get('edit/{ID}',[Admin\InvoiceDetailController::class, 'edit'])->name('invoicedetails.edit');
