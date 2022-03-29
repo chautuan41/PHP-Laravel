@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('home', [HomeController::class, 'index'])->name('user.home');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('custom-login', [LoginController::class, 'customLogin'])->name('login.custom'); 
+Route::get('register', [LoginController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [LoginController::class, 'signOut'])->name('signout');
+Route::get('/shop', [HomeController::class, 'shop'])->name('user.shop');
+Route::get('/products/{ID}', [HomeController::class, 'products'])->name('user.products');
 
 Route::group(['middleware' => ['auth:web']], function () {
-    
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
-    Route::get('/products/{ID}', [HomeController::class, 'products'])->name('products');
-    Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
-    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::get('/cart/{ID}', [HomeController::class, 'cart'])->name('user.cart');
+    Route::get('/profile/{ID}', [HomeController::class, 'profile'])->name('user.profile');
 });
